@@ -7,4 +7,4 @@ By finding the right influencer for there specific product.
 ## Technologies
 1. Java 11
 2. Hibernate Postgres
-3.
+ 

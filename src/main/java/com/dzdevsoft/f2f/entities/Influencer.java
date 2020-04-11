@@ -34,14 +34,11 @@ public class Influencer extends BaseEntity implements Serializable {
 
   Date dateOfBirth;
 
-  @ElementCollection(targetClass = Niches.class)
+  //@ElementCollection(targetClass = Niche.class)
   @Enumerated(EnumType.STRING)
-  List<Niches> niches;
+  Niche niche;
 
   @OneToOne(cascade = CascadeType.ALL)
   SocialMediaInfos links;
 
-  public enum Niches {
-    TRAVELING, BEAUTY, FASHION, HEALTH_FITNESS, LIFESTYLE, PARENTING, BUSINESS, MUSIC, PHOTOGRAPHY, FOOD, ANIMALS
-  }
 }

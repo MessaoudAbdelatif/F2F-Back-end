@@ -2,9 +2,7 @@ package com.dzdevsoft.f2f.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -26,19 +24,18 @@ public class Influencer extends BaseEntity implements Serializable {
 
   @NotNull
   @NotBlank
-  String firstName;
+  private String firstName;
 
   @NotNull
   @NotBlank
-  String lastName;
+  private String lastName;
 
-  Date dateOfBirth;
+  private Date dateOfBirth;
 
   //@ElementCollection(targetClass = Niche.class)
   @Enumerated(EnumType.STRING)
-  Niche niche;
+  private Niche niche;
 
   @OneToOne(cascade = CascadeType.ALL)
-  SocialMediaInfos links;
-
+  private SocialMediaInfos links;
 }

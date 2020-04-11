@@ -1,7 +1,11 @@
 package com.dzdevsoft.f2f.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -19,8 +23,11 @@ public class Company extends BaseEntity implements Serializable {
 
   @NotNull
   @NotBlank
-  String name;
+  private String name;
 
   @NotNull @NotBlank
-  String siret;
+  private String siret;
+
+  @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  private List<Product> products;
 }

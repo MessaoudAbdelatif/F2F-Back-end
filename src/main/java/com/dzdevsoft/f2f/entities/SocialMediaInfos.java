@@ -15,15 +15,15 @@ import org.hibernate.validator.constraints.URL;
 public class SocialMediaInfos implements Serializable {
 
   @Id
-  Long id;
+  private Long id;
   @URL
-  String instagramLink;
+  private String instagramLink;
   @URL
-  String facebookLink;
+  private String facebookLink;
   @URL
-  String twitterLink;
+  private String twitterLink;
   @URL
-  String youtubeLink;
+  private String youtubeLink;
   @URL
-  String pinterestLink;
+  private String pinterestLink;
 }

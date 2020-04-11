@@ -19,19 +19,19 @@ public class Address implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  Long id;
+  private Long id;
 
   @NotNull
-  String street;
-  String streetAdditional;
+  private String street;
+  private String streetAdditional;
 
   @NotNull
   @Pattern(regexp = "/^(?:[0-8]\\d|9[0-8])\\d{3}$/")
-  String zipCode;
+  private String zipCode;
 
   @NotNull
-  String city;
+  private String city;
 
   @NotNull
-  String country;
+  private String country;
 }

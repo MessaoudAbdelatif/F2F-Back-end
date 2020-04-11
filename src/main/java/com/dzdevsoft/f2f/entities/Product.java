@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -21,19 +23,22 @@ public class Product implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  Long id;
+  private Long id;
 
   @NotNull
   @NotBlank
-  String name;
+  private String name;
 
   @Lob
-  String description;
+  private String description;
 
   @URL
-  String link;
+  private String link;
 
   @URL
-  String picture;
+  private String picture;
 
+  @ManyToOne
+  @JoinColumn(name = "company")
+  private Company company;
 }

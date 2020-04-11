@@ -42,15 +42,15 @@ public class BaseEntity {
   private Timestamp lastModifiedDate;
 
   @Lob
-  String description;
+  private String description;
 
   @OneToOne(cascade = CascadeType.ALL)
-  Address address;
+  private Address address;
 
   @Email
-  String email;
+  private String email;
 
-  Boolean isActive;
+  private Boolean isActive;
 
   public boolean isNew() {
     return this.id == null;

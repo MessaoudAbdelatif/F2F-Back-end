@@ -17,7 +17,9 @@ import org.springframework.test.context.jdbc.SqlGroup;
 @SpringBootTest(classes = {F2fApplication.class}, webEnvironment = WebEnvironment.RANDOM_PORT)
 @SqlGroup({
     @Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = {
-        "classpath:fake_data.sql"})})
+        "classpath:fake_data.sql"}),
+    @Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = {
+        "classpath:drop_fake_tables.sql"})})
 public class DaoIT {
 
   @Autowired

@@ -20,7 +20,6 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Company extends BaseEntity implements Serializable {
 
-
   @NotNull
   @NotBlank
   private String name;

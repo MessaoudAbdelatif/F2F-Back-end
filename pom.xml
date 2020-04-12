@@ -117,6 +117,11 @@
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.5</version>
+        <configuration>
+          <excludes>
+            <exclude>com/dzdevsoft/f2f/entities/*</exclude>
+          </excludes>
+        </configuration>
         <executions>
           <execution>
             <goals>
@@ -130,8 +135,35 @@
               <goal>report</goal>
             </goals>
           </execution>
+          <execution>
+            <id>default-report-integration</id>
+            <goals>
+              <goal>report-integration</goal>
+            </goals>
+          </execution>
         </executions>
       </plugin>
+      <!--SETTING INTEGRATION TESTS-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <configuration>
+          <includes>
+            <include>**/*IT.java</include>
+          </includes>
+        </configuration>
+        <executions>
+          <execution>
+            <id>failsafe-integration-tests</id>
+            <phase>integration-test</phase>
+            <goals>
+              <goal>integration-test</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!--SETTING INTEGRATION TESTS-->
+
       <!--JACOCO HERE END -->
     </plugins>
   </build>

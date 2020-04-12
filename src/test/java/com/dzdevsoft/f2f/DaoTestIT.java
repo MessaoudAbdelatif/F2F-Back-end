@@ -20,7 +20,7 @@ import org.springframework.test.context.jdbc.SqlGroup;
         "classpath:fake_data.sql"}),
     @Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = {
         "classpath:drop_fake_tables.sql"})})
-public class DaoIT {
+public class DaoTestIT {
 
   @Autowired
   InfluencerDao classUnderTest;

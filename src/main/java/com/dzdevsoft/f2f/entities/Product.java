@@ -1,6 +1,8 @@
 package com.dzdevsoft.f2f.entities;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +15,7 @@ import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.URL;
 
 @Data
@@ -37,6 +40,10 @@ public class Product implements Serializable {
 
   @URL
   private String picture;
+
+  @CreationTimestamp
+  @Column(updatable = false)
+  private Timestamp createdDate;
 
   @ManyToOne
   @JoinColumn(name = "company")

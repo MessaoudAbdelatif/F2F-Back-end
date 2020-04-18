@@ -41,7 +41,7 @@ public class BaseEntity {
   @UpdateTimestamp
   private Timestamp lastModifiedDate;
 
-  @Lob
+  @Column(columnDefinition="TEXT")
   private String description;
 
   @OneToOne(cascade = CascadeType.ALL)

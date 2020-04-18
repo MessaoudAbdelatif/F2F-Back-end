@@ -32,7 +32,7 @@ public class Product implements Serializable {
   @NotBlank
   private String name;
 
-  @Lob
+  @Column(columnDefinition="TEXT")
   private String description;
 
   @URL

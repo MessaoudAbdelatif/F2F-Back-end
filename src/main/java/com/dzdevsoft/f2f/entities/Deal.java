@@ -25,7 +25,7 @@ public class Deal implements Serializable {
   @NotNull
   private String title;
 
-  @Lob
+  @Column(columnDefinition="TEXT")
   private String offer;
 
   private Boolean state;

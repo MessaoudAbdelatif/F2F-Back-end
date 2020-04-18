@@ -23,7 +23,7 @@ public class Message {
   @NotNull
   private String title;
 
-  @Lob
+  @Column(columnDefinition="TEXT")
   private String text;
 
   @CreationTimestamp

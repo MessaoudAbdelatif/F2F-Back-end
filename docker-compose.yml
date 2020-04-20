@@ -1,0 +1,39 @@
+version: '3'
+
+volumes:
+  postgres_data:
+    driver: local
+
+services:
+  postgres:
+    image: postgres:latest
+    volumes:
+    - postgres_data:/Users/mess/Documents/f2f/postgreSql/data
+    environment:
+      POSTGRES_DB: Keycloak
+      POSTGRES_USER: Keycloak
+      POSTGRES_PASSWORD: password
+
+  keycloak:
+    image: jboss/keycloak:4.8.3.Final
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: Keycloak
+      DB_USER: Keycloak
+      DB_SHEMA: public
+      DB_PASSWORD: password
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+    ports:
+    - 8080:8080
+    volumes:
+    - ./themes/MesThemes/:/Users/mess/Documents/f2f/keycloakTheme/
+    depends_on:
+      - postgres
+      - smtp4dev
+
+  smtp4dev:
+    image: rnwood/smtp4dev:linux-amd64-latest
+    ports:
+    - 13000:80

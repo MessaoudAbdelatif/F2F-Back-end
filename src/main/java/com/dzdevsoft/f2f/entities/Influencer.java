@@ -32,12 +32,12 @@ public class Influencer extends BaseEntity implements Serializable {
 
   private Date dateOfBirth;
 
-  private String imagePath;
-
   //@ElementCollection(targetClass = Niche.class)
   @Enumerated(EnumType.STRING)
   private Niche niche;
 
   @OneToOne(cascade = CascadeType.ALL)
   private SocialMediaInfos links;
+
+  private String imagePath;
 }

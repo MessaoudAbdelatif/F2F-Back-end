@@ -29,4 +29,6 @@ public class Company extends BaseEntity implements Serializable {
 
   @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   private List<Product> products;
+
+  private String logoPath;
 }

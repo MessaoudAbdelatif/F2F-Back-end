@@ -14,5 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface MessageDao extends JpaRepository<Message, FusionID> {
 
   Optional<List<Message>> findByIdInfluencerIDOrderByCreatedDateDesc(UUID id);
+  Optional<List<Message>> findByIdCompanyIDOrderByCreatedDateDesc(UUID id);
 
 }

@@ -6,10 +6,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,13 +41,15 @@ public class BaseEntity {
   @UpdateTimestamp
   private Timestamp lastModifiedDate;
 
-  @Column(columnDefinition="TEXT")
+  @Column(columnDefinition = "TEXT")
   private String description;
 
   @OneToOne(cascade = CascadeType.ALL)
   private Address address;
 
   @Email
+  @NotNull
+  @Column(unique = true)
   private String email;
 
   private Boolean isActive;

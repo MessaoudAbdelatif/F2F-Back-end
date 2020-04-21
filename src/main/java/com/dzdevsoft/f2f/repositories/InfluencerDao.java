@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface InfluencerDao extends JpaRepository<Influencer, UUID> {
 
+  Influencer findByEmail(String email);
 }

@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Lob;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +22,7 @@ public class Message {
   @NotNull
   private String title;
 
-  @Column(columnDefinition="TEXT")
+  @Column(columnDefinition = "TEXT")
   private String text;
 
   @CreationTimestamp

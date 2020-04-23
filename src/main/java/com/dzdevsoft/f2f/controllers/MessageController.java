@@ -2,12 +2,15 @@ package com.dzdevsoft.f2f.controllers;
 
 import com.dzdevsoft.f2f.entities.Message;
 import com.dzdevsoft.f2f.services.contracts.MessageBusiness;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 public class MessageController {
 
@@ -17,18 +20,18 @@ public class MessageController {
     this.messageBusiness = messageBusiness;
   }
 
-  @GetMapping("/api/v1/messages/influencer/{email}")
-  public List<Message> getAllInfluencerMessages(@PathVariable("email") String email) {
+  @GetMapping("/api/v1/messages/influencer")
+  public List<Message> getAllInfluencerMessages(Principal principal) {
     List<Message> other = new ArrayList<>();
     return messageBusiness
-        .getMessagesfromInfulencerEmailDao(email).orElse(other);
+        .getMessagesfromInfulencerEmailDao(UUID.fromString(principal.getName())).orElse(other);
   }
 
-  @GetMapping("/api/v1/messages/company/{email}")
-  public List<Message> getAllCompanyMessages(@PathVariable("email") String email) {
+  @GetMapping("/api/v1/messages/company")
+  public List<Message> getAllCompanyMessages(Principal principal) {
     List<Message> other = new ArrayList<>();
     return messageBusiness
-        .getMessagesfromCompanyEmailDao(email).orElse(other);
+        .getMessagesfromCompanyEmailDao(UUID.fromString(principal.getName())).orElse(other);
   }
 }
 

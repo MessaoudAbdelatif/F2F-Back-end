@@ -1,9 +1,14 @@
 package com.dzdevsoft.f2f.entities;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,10 +19,11 @@ import org.hibernate.annotations.CreationTimestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Message {
+public class Message implements Serializable {
 
-  @EmbeddedId
-  private FusionID id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
   @NotNull
   private String title;
@@ -28,4 +34,12 @@ public class Message {
   @CreationTimestamp
   @Column(updatable = false)
   private Timestamp createdDate;
+
+  @ManyToOne
+  @JoinColumn(name = "influencer_id")
+  private Influencer influencer;
+
+  @ManyToOne
+  @JoinColumn(name = "company_id")
+  private Company company;
 }

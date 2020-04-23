@@ -24,11 +24,19 @@ public class Company extends BaseEntity implements Serializable {
   @NotBlank
   private String name;
 
-  @NotNull @NotBlank
+  @NotNull
+  @NotBlank
   private String siret;
 
   @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   private List<Product> products;
 
   private String logoPath;
+
+  @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  private List<Message> messages;
+
+  @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  private List<Deal> deals;
+
 }

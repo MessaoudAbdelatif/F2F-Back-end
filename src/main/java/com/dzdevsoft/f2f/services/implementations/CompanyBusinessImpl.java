@@ -3,6 +3,8 @@ package com.dzdevsoft.f2f.services.implementations;
 import com.dzdevsoft.f2f.entities.Company;
 import com.dzdevsoft.f2f.repositories.CompanyDao;
 import com.dzdevsoft.f2f.services.contracts.CompanyBusiness;
+import java.security.Principal;
+import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +20,11 @@ public class CompanyBusinessImpl implements CompanyBusiness {
     this.companyDao = companyDao;
   }
 
-  public Company getInfluencerByEmail(String email) {
-    return companyDao.findByEmail(email);
+  public Company getCompanyById(UUID id) throws IllegalArgumentException {
+    return companyDao.findById(id).orElseThrow(IllegalArgumentException::new);
+  }
+
+  public Company getPrincipal(Principal principal) {
+    return getCompanyById(UUID.fromString(principal.getName()));
   }
 }

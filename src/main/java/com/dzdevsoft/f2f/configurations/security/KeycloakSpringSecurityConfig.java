@@ -5,6 +5,7 @@ import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurer
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -32,6 +33,11 @@ public class KeycloakSpringSecurityConfig extends KeycloakWebSecurityConfigurerA
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     super.configure(http);
-    http.authorizeRequests().antMatchers("/api/**").authenticated();
+    http.csrf().disable();
+
+    http.authorizeRequests()
+        .antMatchers(HttpMethod.OPTIONS).permitAll()
+        .antMatchers(HttpMethod.POST, "/api/v1/message/company").permitAll()
+        .anyRequest().permitAll();
   }
 }

@@ -13,4 +13,6 @@ public interface MessageBusiness {
   Optional<List<Message>> getMessagesfromCompanyDao(Company company);
 
   Message createMessage(Message message);
+
+  void deleteMessage(Long id);
 }

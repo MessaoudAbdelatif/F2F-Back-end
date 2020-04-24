@@ -36,4 +36,9 @@ public class MessageBusinessImpl implements MessageBusiness {
     messageDao.save(message);
     return message;
   }
+
+  @Override
+  public void deleteMessage(Long id) {
+    messageDao.deleteById(id);
+  }
 }

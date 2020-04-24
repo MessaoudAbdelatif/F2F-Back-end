@@ -15,5 +15,6 @@ public class InfluencerDto {
   String dateOfBirth;
   String niche;
   String links;
+  String imagePath;
 
 }

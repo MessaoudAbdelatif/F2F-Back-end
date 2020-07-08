@@ -11,4 +11,4 @@ By finding the right influencer for there specific product.
 
 ## Technical Presentation Slides :
 
-<img src="Capture d’écran 2020-07-09 à 01.13.49.png" width=600>
+<img src="Capture d’écran 2020-07-09 à 01.13.49.png" width=900>
